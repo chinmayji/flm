@@ -49,8 +49,8 @@ body{
 
 .main{
   margin: 0;
-  background-color: #222;
-  height: 100%;
+  background-color: #fff;
+  height: 100vh;
   width: 100%;
 }
 .nav-bar{
@@ -155,10 +155,27 @@ body{
   margin: auto;
   margin-top: 1rem;
   max-width: 500px;
+  position: relative;
+  margin-bottom: 1.5rem;;
 }
 
 .qrcode > img{
   width: 100%;
+  position: relative;
+  z-index: 5;
+  /* visibility: hidden; */
+}
+
+.shadow-source{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%);
+  width: 95%;
+  height: 90%;
+  z-index: 0;
+  background-color: rgba(255, 255, 255, 0);
+  box-shadow: 0 25px 15px rgba(0, 0, 0, 0.13);
 }
 
 #mycard{
@@ -187,11 +204,16 @@ body{
 }
 
 .mask{
+  /* width: 100%;
+  height: 100%; */
   border-radius: inherit;
   clip-path: circle(0 at 10% 40%);
   transition: clip-path .5s ease-in-out;
   position: absolute;
-  inset: 0;
+  top:-1px;
+  bottom: -1px;
+  left: -1px;
+  right: -1px;
   background-color: rgba(0, 0, 0, 0.164);
   z-index: 0;
 }
@@ -229,7 +251,7 @@ body{
 #edit-profile{
   position: relative;
   border-radius: 7px;
-  border: 1px solid var(--border-color);
+  border: 1.5px solid var(--border-color);
   padding: .3rem;
   margin-bottom: 1rem;
   padding: .7rem 0 .7rem 1rem;
@@ -302,4 +324,93 @@ body{
 .profile-list-item-2 > span:first-of-type{
   margin-left: .2rem;
   z-index: 10;
+}
+
+
+/* --------------------------------------- */
+
+:root{
+  --slide-off: rgb(196, 196, 196);
+  --slide-on: rgb(41, 22, 110);
+}
+
+.tour-image{
+  width: 100%;
+  scroll-snap-align: start;
+  flex:none;
+}
+.tour-scroll{
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  z-index: 0;
+
+
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none;
+
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+  width: 100%;
+  max-width: 500px;
+}
+
+.tour-scroll::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  height: 0;
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+
+#signin-block{
+  position: fixed;
+  bottom: 2rem;
+  width: 100%;
+  height: 2.6rem;
+  /* border: 1px solid black; */
+}
+
+#signin-block > div{
+  width: min(10.5rem , calc(50% - 1.5rem));
+  height: 100%;
+  border-radius: 1.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  margin: 0 1rem;
+}
+ 
+#signin-block > div:first-of-type{
+  border: 1px solid black;
+}
+
+#signin-block > div:last-of-type{
+  background-color: rgb(255,177,26);
+  position: absolute;
+  right: 0;
+} 
+
+#slide-dots{
+  position: absolute;
+  /* display: inline-block; */
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,calc(-100% - 2rem));
+  width: 5rem;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+#slide-dots > div{
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 0.25rem;
 }

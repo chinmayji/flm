@@ -17,9 +17,9 @@ const logos = {
  * @param {Event} e
  */
 function openMask(e) {
-  console.log(e.target);
+  // console.log(e.target);
   let it = e.target;
-  while (it && !it.classList.contains('mask-container')) {
+  while (it && !it.classList.contains("mask-container")) {
     it = it.parentElement;
   }
   // console.log('it',it);
@@ -41,14 +41,21 @@ function HomeComponent() {
       </div>
       <div className="welcome">Welcome to FLM Loyalty Program</div>
       <div className="qrcode">
+        <div className="shadow-source"></div>
         <img src={require("./images/qrcard.png")} alt="" />
       </div>
-      <div className="home-list-item mask-container" onClick={(e) => openMask(e)}>
+      <div
+        className="home-list-item mask-container"
+        onClick={(e) => openMask(e)}
+      >
         <div className="mask"></div>
         <img src={require("./images/promotions-select.png")} alt="bell" />
         <span>Rewards catalogue</span>
       </div>
-      <div className="home-list-item mask-container" onClick={(e) => openMask(e)}>
+      <div
+        className="home-list-item mask-container"
+        onClick={(e) => openMask(e)}
+      >
         <div className="mask"></div>
         <img src={require("./images/map.png")} alt="bell" />
         <span>Rewards catalogue</span>
@@ -67,6 +74,7 @@ function MyCard() {
         Show this card each time you shop and get instant cash saving
       </div>
       <div className="qrcode">
+        <div className="shadow-source"></div>
         <img src={require("./images/qrcard.png")} alt="" />
       </div>
     </div>
@@ -106,15 +114,23 @@ function Loading(props) {
   );
 }
 
-function Profile() {
+function Profile(props) {
   return (
     <div className="container">
-      <div id="edit-profile" className=" mask-container" onClick={(e) => openMask(e)}>
+      <div
+        id="edit-profile"
+        className=" mask-container"
+        onClick={(e) => openMask(e)}
+      >
         <div>Chinmay</div>
         <div className="mask"></div>
         <div>View and edit profile</div>
       </div>
-      <div id="steps-left" className=" mask-container" onClick={(e) => openMask(e)}>
+      <div
+        id="steps-left"
+        className=" mask-container"
+        onClick={(e) => openMask(e)}
+      >
         <div>1 Step left</div>
         <div className="mask"></div>
         <div id="step-progress"></div>
@@ -122,61 +138,100 @@ function Profile() {
           Complete your profile to get the best Capillary app experience
         </div>
       </div>
-      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+      <div
+        className="profile-list-item  mask-container"
+        onClick={(e) => openMask(e)}
+      >
         <div className="mask"></div>
         <img src={require("./images/credit-card.png")} alt="" />
         <span>Stamps</span>
       </div>
-      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+      <div
+        className="profile-list-item  mask-container"
+        onClick={(e) => openMask(e)}
+      >
         <div className="mask"></div>
         <img src={require("./images/game-controller.png")} alt="" />
         <span>Games</span>
       </div>
-      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+      <div
+        className="profile-list-item  mask-container"
+        onClick={(e) => openMask(e)}
+      >
         <div className="mask"></div>
         <img src={require("./images/shopping-store.png")} alt="" />
         <span>Store Locator</span>
       </div>
-      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+      <div
+        className="profile-list-item  mask-container"
+        onClick={(e) => openMask(e)}
+      >
         <div className="mask"></div>
         <img src={require("./images/transaction.png")} alt="" />
         <span>Transactions</span>
       </div>
-      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+      <div
+        className="profile-list-item  mask-container"
+        onClick={(e) => openMask(e)}
+      >
         <div className="mask"></div>
         <img src={require("./images/bell.png")} alt="" />
         <span>Notifications</span>
       </div>
-      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+      <div
+        className="profile-list-item  mask-container"
+        onClick={(e) => openMask(e)}
+      >
         <div className="mask"></div>
         <img src={require("./images/refer.png")} alt="" />
         <span>Refer a friend</span>
       </div>
-      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+      <div
+        className="profile-list-item  mask-container"
+        onClick={(e) => openMask(e)}
+      >
         <div className="mask"></div>
         <img src={require("./images/manual.png")} alt="" />
         <span>App tour</span>
       </div>
-      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+      <div
+        className="profile-list-item  mask-container"
+        onClick={(e) => openMask(e)}
+      >
         <div className="mask"></div>
         <img src={require("./images/help.png")} alt="" />
         <span>Help</span>
       </div>
-      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+      <div
+        className="profile-list-item  mask-container"
+        onClick={(e) => openMask(e)}
+      >
         <div className="mask"></div>
         <img src={require("./images/setting.png")} alt="" />
         <span>Settings</span>
       </div>
-      <div className="profile-list-item-2 mask-container" onClick={(e) => openMask(e)}>
+      <div
+        className="profile-list-item-2 mask-container"
+        onClick={(e) => openMask(e)}
+      >
         <div className="mask"></div>
         <span>Legal</span>
       </div>
-      <div className="profile-list-item-2 mask-container" onClick={(e) => openMask(e)}>
+      <div
+        className="profile-list-item-2 mask-container"
+        onClick={(e) => openMask(e)}
+      >
         <div className="mask"></div>
         <span>Software version</span>
         <span style={{ float: "right", marginRight: ".2rem" }}>V 1.0.13</span>
       </div>
-      <div className="profile-list-item-2 mask-container" onClick={(e) => openMask(e)}>
+      <div
+        className="profile-list-item-2 mask-container"
+        onClick={(e) => {
+          openMask(e);
+          props.setSpace('tour');
+        }}
+      >
         <div className="mask"></div>
         <span>Sign out</span>
       </div>
@@ -184,11 +239,11 @@ function Profile() {
   );
 }
 
-function App() {
+function UserSpace(props) {
   let [currentTab, setCurrentTab] = useState("home");
   let tabRef = useRef();
   let homeRef = useRef();
-  console.log(currentTab);
+  // console.log(currentTab);
   useEffect(() => {
     tabRef.current = homeRef.current;
   }, []);
@@ -207,7 +262,7 @@ function App() {
         {currentTab === "promotions" && <Promotions />}
         {currentTab === "mycard" && <MyCard />}
         {currentTab === "vouchers" && <Vouchers />}
-        {currentTab === "profile" && <Profile />}
+        {currentTab === "profile" && <Profile setSpace={props.setSpace}/>}
       </div>
       <div className="nav-bar">
         <div
@@ -262,6 +317,50 @@ function App() {
       </div>
     </div>
   );
+}
+
+function TourSpace(props){
+  const [slideNo,setSlideNo] = useState(0);
+  function handleScroll(e){
+    let pos = e.target.scrollLeft;
+    setTimeout(()=>{
+      if(pos-e.target.scrollLeft===0){
+        console.log(e.target.scrollLeft, e.target.scrollWidth);
+        console.log(Math.floor((3*(e.target.scrollLeft+50))/e.target.scrollWidth));
+        setSlideNo(Math.floor((3*(e.target.scrollLeft+50))/e.target.scrollWidth));
+      }
+    },100);
+  }
+
+
+  return (<div className="main">
+    <div style={{float:'right', margin:'2rem 1rem', position:'relative', zIndex:'10'}}><u>Find Store</u></div>
+    <div className="tour-scroll" onScroll={e=>handleScroll(e)}>
+      <img className="tour-image" src={require('./images/p1.png')} alt="" />
+      <img className="tour-image" src={require('./images/p2.png')} alt="" />
+      <img className="tour-image" src={require('./images/p3.png')} alt="" />
+    </div>
+    <div id="signin-block">
+      <div onClick={()=>{
+        props.setSpace('user');
+      }}>Sign in</div>
+      <span id="slide-dots">
+        <div style={{backgroundColor:(slideNo===0?'var(--slide-on)':'var(--slide-off)')}}></div>
+        <div style={{backgroundColor:(slideNo===1?'var(--slide-on)':'var(--slide-off)')}}></div>
+        <div style={{backgroundColor:(slideNo===2?'var(--slide-on)':'var(--slide-off)')}}></div>
+      </span>
+      <div>Register</div>
+    </div>
+
+  </div>);
+}
+
+function App(){
+  const [currentSpace, setCurrentSpace] = useState('tour');
+  return (<div className="main">
+    {currentSpace === 'tour' && <TourSpace setSpace={setCurrentSpace}/>}
+    {currentSpace === 'user' && <UserSpace setSpace={setCurrentSpace}/>}
+  </div>)
 }
 
 export default App;
