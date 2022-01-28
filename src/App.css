@@ -66,6 +66,7 @@ body{
   align-items: flex-end;
 
   box-shadow: 0 0px 5px var(--shadow-color);
+  z-index: 20;
 }
 
 .nav-btn{
@@ -182,16 +183,34 @@ body{
   align-items: center;
   margin: 1rem 0;
   border-radius: 4px;
+  position: relative;
+}
+
+.mask{
+  border-radius: inherit;
+  clip-path: circle(0 at 10% 40%);
+  transition: clip-path .5s ease-in-out;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.164);
+  z-index: 0;
+}
+
+.maskOpen{
+  
+  clip-path: circle(calc(100% * 2) at 10% 40%);
 }
 
 .home-list-item > img{
   width: 1.5rem;
   height: 1.5rem;
   margin-left: 1rem;
+  z-index: 10;
 }
 
 .home-list-item > span{
   margin-left: 1rem;
+  z-index: 10;
 }
 
 #loading-container{
@@ -208,6 +227,7 @@ body{
 }
 
 #edit-profile{
+  position: relative;
   border-radius: 7px;
   border: 1px solid var(--border-color);
   padding: .3rem;
@@ -224,6 +244,7 @@ body{
 }
 
 #steps-left{
+  position: relative;
   border-radius: 7px;
   border: 1px solid var(--border-color);
   padding: .7rem 0 .7rem 1rem;
@@ -252,6 +273,7 @@ body{
 .profile-list-item{
   border-bottom: 1px solid var(--border-color);
   padding: 1.45rem 0;
+  position: relative;
 
   display: flex;
   justify-content: flex-start;
@@ -262,18 +284,22 @@ body{
   width: 1.5rem;
   height: 1.5rem;
   margin-left: .5rem;
+  z-index: 10;
 }
 
 .profile-list-item > span{
   font-size: 1.2rem;
   margin-left: .7rem;
+  z-index: 10;
 }
 
 .profile-list-item-2{
   border-bottom: 1px solid var(--border-color);
   padding: 1.45rem 0;
   font-size: 1.2rem;
+  position: relative;
 }
 .profile-list-item-2 > span:first-of-type{
   margin-left: .2rem;
+  z-index: 10;
 }

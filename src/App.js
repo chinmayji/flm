@@ -12,6 +12,24 @@ const logos = {
   profile: require("./images/profile.png"),
   profileSelect: require("./images/profile-select.png"),
 };
+/**
+ *
+ * @param {Event} e
+ */
+function openMask(e) {
+  console.log(e.target);
+  let it = e.target;
+  while (it && !it.classList.contains('mask-container')) {
+    it = it.parentElement;
+  }
+  // console.log('it',it);
+  if (!it) return;
+  let m = it.querySelector(".mask");
+  m?.classList.add("maskOpen");
+  setTimeout(() => {
+    m.classList.remove("maskOpen");
+  }, 1000);
+}
 
 function HomeComponent() {
   return (
@@ -25,11 +43,13 @@ function HomeComponent() {
       <div className="qrcode">
         <img src={require("./images/qrcard.png")} alt="" />
       </div>
-      <div className="home-list-item">
+      <div className="home-list-item mask-container" onClick={(e) => openMask(e)}>
+        <div className="mask"></div>
         <img src={require("./images/promotions-select.png")} alt="bell" />
         <span>Rewards catalogue</span>
       </div>
-      <div className="home-list-item">
+      <div className="home-list-item mask-container" onClick={(e) => openMask(e)}>
+        <div className="mask"></div>
         <img src={require("./images/map.png")} alt="bell" />
         <span>Rewards catalogue</span>
       </div>
@@ -59,7 +79,7 @@ function Promotions() {
       <div className="title-row">
         <span>Promotions</span>
       </div>
-      <Loading width='100%' height='90%'/>
+      <Loading width="100%" height="90%" />
     </div>
   );
 }
@@ -70,7 +90,7 @@ function Vouchers() {
       <div className="title-row">
         <span>Vouchers</span>
       </div>
-      <Loading width='100%' height='90%'/>
+      <Loading width="100%" height="90%" />
     </div>
   );
 }
@@ -86,64 +106,82 @@ function Loading(props) {
   );
 }
 
-function Profile(){
-  return (<div className="container">
-    <div id="edit-profile">
-      <div>Chinmay</div>
-      <div>View and edit profile</div>
+function Profile() {
+  return (
+    <div className="container">
+      <div id="edit-profile" className=" mask-container" onClick={(e) => openMask(e)}>
+        <div>Chinmay</div>
+        <div className="mask"></div>
+        <div>View and edit profile</div>
+      </div>
+      <div id="steps-left" className=" mask-container" onClick={(e) => openMask(e)}>
+        <div>1 Step left</div>
+        <div className="mask"></div>
+        <div id="step-progress"></div>
+        <div>
+          Complete your profile to get the best Capillary app experience
+        </div>
+      </div>
+      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+        <div className="mask"></div>
+        <img src={require("./images/credit-card.png")} alt="" />
+        <span>Stamps</span>
+      </div>
+      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+        <div className="mask"></div>
+        <img src={require("./images/game-controller.png")} alt="" />
+        <span>Games</span>
+      </div>
+      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+        <div className="mask"></div>
+        <img src={require("./images/shopping-store.png")} alt="" />
+        <span>Store Locator</span>
+      </div>
+      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+        <div className="mask"></div>
+        <img src={require("./images/transaction.png")} alt="" />
+        <span>Transactions</span>
+      </div>
+      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+        <div className="mask"></div>
+        <img src={require("./images/bell.png")} alt="" />
+        <span>Notifications</span>
+      </div>
+      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+        <div className="mask"></div>
+        <img src={require("./images/refer.png")} alt="" />
+        <span>Refer a friend</span>
+      </div>
+      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+        <div className="mask"></div>
+        <img src={require("./images/manual.png")} alt="" />
+        <span>App tour</span>
+      </div>
+      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+        <div className="mask"></div>
+        <img src={require("./images/help.png")} alt="" />
+        <span>Help</span>
+      </div>
+      <div className="profile-list-item  mask-container" onClick={(e) => openMask(e)}>
+        <div className="mask"></div>
+        <img src={require("./images/setting.png")} alt="" />
+        <span>Settings</span>
+      </div>
+      <div className="profile-list-item-2 mask-container" onClick={(e) => openMask(e)}>
+        <div className="mask"></div>
+        <span>Legal</span>
+      </div>
+      <div className="profile-list-item-2 mask-container" onClick={(e) => openMask(e)}>
+        <div className="mask"></div>
+        <span>Software version</span>
+        <span style={{ float: "right", marginRight: ".2rem" }}>V 1.0.13</span>
+      </div>
+      <div className="profile-list-item-2 mask-container" onClick={(e) => openMask(e)}>
+        <div className="mask"></div>
+        <span>Sign out</span>
+      </div>
     </div>
-    <div id="steps-left">
-      <div>1 Step left</div>
-      <div id='step-progress'></div>
-      <div>Complete your profile to get the best Capillary app experience</div>
-    </div>
-    <div className="profile-list-item">
-      <img src={require('./images/credit-card.png')} alt="" />
-      <span>Stamps</span>
-    </div>
-    <div className="profile-list-item">
-      <img src={require('./images/game-controller.png')} alt="" />
-      <span>Games</span>
-    </div>
-    <div className="profile-list-item">
-      <img src={require('./images/shopping-store.png')} alt="" />
-      <span>Store Locator</span>
-    </div>
-    <div className="profile-list-item">
-      <img src={require('./images/transaction.png')} alt="" />
-      <span>Transactions</span>
-    </div>
-    <div className="profile-list-item">
-      <img src={require('./images/bell.png')} alt="" />
-      <span>Notifications</span>
-    </div>
-    <div className="profile-list-item">
-      <img src={require('./images/refer.png')} alt="" />
-      <span>Refer a friend</span>
-    </div>
-    <div className="profile-list-item">
-      <img src={require('./images/manual.png')} alt="" />
-      <span>App tour</span>
-    </div>
-    <div className="profile-list-item">
-      <img src={require('./images/help.png')} alt="" />
-      <span>Help</span>
-    </div>
-    <div className="profile-list-item">
-      <img src={require('./images/setting.png')} alt="" />
-      <span>Settings</span>
-    </div>
-    <div className="profile-list-item-2">
-      <span>Legal</span>
-    </div>
-    <div className="profile-list-item-2">
-      <span>Software version</span>
-      <span style={{float:'right',marginRight:'.2rem'}}>V 1.0.13</span>
-    </div>
-    <div className="profile-list-item-2">
-      <span>Sign out</span>
-    </div>
-  </div>)
+  );
 }
 
 function App() {
@@ -168,8 +206,8 @@ function App() {
         {currentTab === "home" && <HomeComponent />}
         {currentTab === "promotions" && <Promotions />}
         {currentTab === "mycard" && <MyCard />}
-        {currentTab === "vouchers" && <Vouchers/>}
-        {currentTab === "profile" && <Profile/>}
+        {currentTab === "vouchers" && <Vouchers />}
+        {currentTab === "profile" && <Profile />}
       </div>
       <div className="nav-bar">
         <div
