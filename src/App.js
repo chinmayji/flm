@@ -95,6 +95,53 @@ function Profile(){
     <div id="steps-left">
       <div>1 Step left</div>
       <div id='step-progress'></div>
+      <div>Complete your profile to get the best Capillary app experience</div>
+    </div>
+    <div className="profile-list-item">
+      <img src={require('./images/credit-card.png')} alt="" />
+      <span>Stamps</span>
+    </div>
+    <div className="profile-list-item">
+      <img src={require('./images/game-controller.png')} alt="" />
+      <span>Games</span>
+    </div>
+    <div className="profile-list-item">
+      <img src={require('./images/shopping-store.png')} alt="" />
+      <span>Store Locator</span>
+    </div>
+    <div className="profile-list-item">
+      <img src={require('./images/transaction.png')} alt="" />
+      <span>Transactions</span>
+    </div>
+    <div className="profile-list-item">
+      <img src={require('./images/bell.png')} alt="" />
+      <span>Notifications</span>
+    </div>
+    <div className="profile-list-item">
+      <img src={require('./images/refer.png')} alt="" />
+      <span>Refer a friend</span>
+    </div>
+    <div className="profile-list-item">
+      <img src={require('./images/manual.png')} alt="" />
+      <span>App tour</span>
+    </div>
+    <div className="profile-list-item">
+      <img src={require('./images/help.png')} alt="" />
+      <span>Help</span>
+    </div>
+    <div className="profile-list-item">
+      <img src={require('./images/setting.png')} alt="" />
+      <span>Settings</span>
+    </div>
+    <div className="profile-list-item-2">
+      <span>Legal</span>
+    </div>
+    <div className="profile-list-item-2">
+      <span>Software version</span>
+      <span style={{float:'right',marginRight:'.2rem'}}>V 1.0.13</span>
+    </div>
+    <div className="profile-list-item-2">
+      <span>Sign out</span>
     </div>
   </div>)
 }
