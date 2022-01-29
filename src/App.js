@@ -2,6 +2,8 @@ import React from "react";
 import { useState, useEffect, useRef, useContext } from "react";
 import "./App.css";
 
+
+
 const logos = {
   home: require("./images/home.png"),
   homeSelect: require("./images/home-select.png"),
@@ -87,7 +89,7 @@ function Promotions() {
       <div className="title-row">
         <span>Promotions</span>
       </div>
-      <Loading width="100%" height="90%" />
+      <Loading width="100%" height="calc(100% - 210px)" />
     </div>
   );
 }
@@ -98,7 +100,7 @@ function Vouchers() {
       <div className="title-row">
         <span>Vouchers</span>
       </div>
-      <Loading width="100%" height="90%" />
+      <Loading width="100%" height="calc(100% - 210px)" />
     </div>
   );
 }
@@ -321,7 +323,9 @@ function UserSpace(props) {
 
 function TourSpace(props){
   const [slideNo,setSlideNo] = useState(0);
+  const tourRef = useRef();
   function handleScroll(e){
+    e.preventDefault();
     let pos = e.target.scrollLeft;
     setTimeout(()=>{
       if(pos-e.target.scrollLeft===0){
@@ -332,10 +336,13 @@ function TourSpace(props){
     },100);
   }
 
+  function goToSlide(n){
+    console.log(tourRef.current.scrollLeft=tourRef.current.offsetWidth*n);
+  }
 
   return (<div className="main">
     <div style={{float:'right', margin:'2rem 1rem', position:'relative', zIndex:'10'}}><u>Find Store</u></div>
-    <div className="tour-scroll" onScroll={e=>handleScroll(e)}>
+    <div className="tour-scroll" onScroll={e=>handleScroll(e)} ref={tourRef}>
       <img className="tour-image" src={require('./images/p1.png')} alt="" />
       <img className="tour-image" src={require('./images/p2.png')} alt="" />
       <img className="tour-image" src={require('./images/p3.png')} alt="" />
@@ -345,14 +352,24 @@ function TourSpace(props){
         props.setSpace('user');
       }}>Sign in</div>
       <span id="slide-dots">
-        <div style={{backgroundColor:(slideNo===0?'var(--slide-on)':'var(--slide-off)')}}></div>
-        <div style={{backgroundColor:(slideNo===1?'var(--slide-on)':'var(--slide-off)')}}></div>
-        <div style={{backgroundColor:(slideNo===2?'var(--slide-on)':'var(--slide-off)')}}></div>
+        <div style={{backgroundColor:(slideNo===0?'var(--slide-on)':'var(--slide-off)')}} onClick={e=>goToSlide(0)}></div>
+        <div style={{backgroundColor:(slideNo===1?'var(--slide-on)':'var(--slide-off)')}} onClick={e=>goToSlide(1)}></div>
+        <div style={{backgroundColor:(slideNo===2?'var(--slide-on)':'var(--slide-off)')}} onClick={e=>goToSlide(2)}></div>
       </span>
-      <div>Register</div>
+      <div onClick={()=>{
+        props.setSpace('login');
+      }}>Register</div>
     </div>
 
   </div>);
+}
+
+function LoginSpace(props){
+  return (<div className="main">
+    <img id="back" src={require('./images/back.png')} onClick={()=>{
+        props.setSpace('tour');
+      }}/>
+  </div>)
 }
 
 function App(){
@@ -360,6 +377,7 @@ function App(){
   return (<div className="main">
     {currentSpace === 'tour' && <TourSpace setSpace={setCurrentSpace}/>}
     {currentSpace === 'user' && <UserSpace setSpace={setCurrentSpace}/>}
+    {currentSpace === 'login' && <LoginSpace setSpace={setCurrentSpace}/>}
   </div>)
 }
 
