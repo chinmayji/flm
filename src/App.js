@@ -68,7 +68,7 @@ function HomeComponent() {
 
 function MyCard() {
   return (
-    <div id="mycard" className="container">
+    <div className="container">
       <div className="title-row">
         <span>Chinmay's Card</span>
       </div>
