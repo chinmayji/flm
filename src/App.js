@@ -267,6 +267,7 @@ function UserSpace(props) {
         {currentTab === "profile" && <Profile setSpace={props.setSpace}/>}
       </div>
       <div className="nav-bar">
+        <div className="bg-holder"></div>
         <div
           className="nav-btn nav-btn-select"
           ref={homeRef}
@@ -297,7 +298,7 @@ function UserSpace(props) {
           className="nav-btn"
           onClick={(e) => navBtnOnclick(e, "mycard")}
         >
-          <img src={require("./images/logo.png")} alt="" />
+          {/* <img src={require("./images/logo.png")} alt="" /> */}
           <span>My card</span>
         </div>
         <div className="nav-btn" onClick={(e) => navBtnOnclick(e, "vouchers")}>
