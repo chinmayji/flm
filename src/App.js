@@ -2,7 +2,12 @@ import React from "react";
 import { useState, useEffect, useRef, useContext } from "react";
 import "./App.css";
 
+import { Swiper, SwiperSlide } from "swiper/react";
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper";
 
 const logos = {
   home: require("./images/home.png"),
@@ -231,7 +236,7 @@ function Profile(props) {
         className="profile-list-item-2 mask-container"
         onClick={(e) => {
           openMask(e);
-          props.setSpace('tour');
+          props.setSpace("tour");
         }}
       >
         <div className="mask"></div>
@@ -264,7 +269,7 @@ function UserSpace(props) {
         {currentTab === "promotions" && <Promotions />}
         {currentTab === "mycard" && <MyCard />}
         {currentTab === "vouchers" && <Vouchers />}
-        {currentTab === "profile" && <Profile setSpace={props.setSpace}/>}
+        {currentTab === "profile" && <Profile setSpace={props.setSpace} />}
       </div>
       <div className="nav-bar">
         <div className="bg-holder"></div>
@@ -322,64 +327,75 @@ function UserSpace(props) {
   );
 }
 
-function TourSpace(props){
-  const [slideNo,setSlideNo] = useState(0);
-  const tourRef = useRef();
-  function handleScroll(e){
-    e.preventDefault();
-    let pos = e.target.scrollLeft;
-    setTimeout(()=>{
-      if(pos-e.target.scrollLeft===0){
-        console.log(e.target.scrollLeft, e.target.scrollWidth);
-        console.log(Math.floor((3*(e.target.scrollLeft+50))/e.target.scrollWidth));
-        setSlideNo(Math.floor((3*(e.target.scrollLeft+50))/e.target.scrollWidth));
-      }
-    },100);
-  }
-
-  function goToSlide(n){
-    console.log(tourRef.current.scrollLeft=tourRef.current.offsetWidth*n);
-  }
-
-  return (<div className="main">
-    <div style={{float:'right', margin:'2rem 1rem', position:'relative', zIndex:'10'}}><u>Find Store</u></div>
-    <div className="tour-scroll" onScroll={e=>handleScroll(e)} ref={tourRef}>
-      <img className="tour-image" src={require('./images/p1.png')} alt="" />
-      <img className="tour-image" src={require('./images/p2.png')} alt="" />
-      <img className="tour-image" src={require('./images/p3.png')} alt="" />
+function TourSpace(props) {
+  return (
+    <div className="main">
+      <div
+        style={{
+          float: "right",
+          margin: "2rem 1rem",
+          position: "relative",
+          zIndex: "100",
+        }}
+      >
+        <u>Find Store</u>
+      </div>
+      <div id="tour-wrapper">
+        <Swiper pagination={true} modules={[Pagination]} className="swiper">
+          <SwiperSlide>
+            <img src={require("./images/p1.png")} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={require("./images/p2.png")} alt="" />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img src={require("./images/p3.png")} alt="" />
+          </SwiperSlide>
+        </Swiper>
+      </div>
+      <div id="signin-block">
+        <div
+          onClick={() => {
+            props.setSpace("user");
+          }}
+        >
+          Sign in
+        </div>
+        <div
+          onClick={() => {
+            props.setSpace("login");
+          }}
+        >
+          Register
+        </div>
+      </div>
     </div>
-    <div id="signin-block">
-      <div onClick={()=>{
-        props.setSpace('user');
-      }}>Sign in</div>
-      <span id="slide-dots">
-        <div style={{backgroundColor:(slideNo===0?'var(--slide-on)':'var(--slide-off)')}} onClick={e=>goToSlide(0)}></div>
-        <div style={{backgroundColor:(slideNo===1?'var(--slide-on)':'var(--slide-off)')}} onClick={e=>goToSlide(1)}></div>
-        <div style={{backgroundColor:(slideNo===2?'var(--slide-on)':'var(--slide-off)')}} onClick={e=>goToSlide(2)}></div>
-      </span>
-      <div onClick={()=>{
-        props.setSpace('login');
-      }}>Register</div>
-    </div>
-
-  </div>);
+  );
 }
 
-function LoginSpace(props){
-  return (<div className="main">
-    <img id="back" src={require('./images/back.png')} onClick={()=>{
-        props.setSpace('tour');
-      }}/>
-  </div>)
+function LoginSpace(props) {
+  return (
+    <div className="main">
+      <img
+        id="back"
+        src={require("./images/back.png")}
+        onClick={() => {
+          props.setSpace("tour");
+        }}
+      />
+    </div>
+  );
 }
 
-function App(){
-  const [currentSpace, setCurrentSpace] = useState('tour');
-  return (<div className="main">
-    {currentSpace === 'tour' && <TourSpace setSpace={setCurrentSpace}/>}
-    {currentSpace === 'user' && <UserSpace setSpace={setCurrentSpace}/>}
-    {currentSpace === 'login' && <LoginSpace setSpace={setCurrentSpace}/>}
-  </div>)
+function App() {
+  const [currentSpace, setCurrentSpace] = useState("tour");
+  return (
+    <div className="main">
+      {currentSpace === "tour" && <TourSpace setSpace={setCurrentSpace} />}
+      {currentSpace === "user" && <UserSpace setSpace={setCurrentSpace} />}
+      {currentSpace === "login" && <LoginSpace setSpace={setCurrentSpace} />}
+    </div>
+  );
 }
 
 export default App;

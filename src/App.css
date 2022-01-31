@@ -353,49 +353,13 @@ body{
   --slide-on: rgb(41, 22, 110);
 }
 
-.tour-image{
-  width: 100%;
-  scroll-snap-align: start;
-  flex:none;
-}
-.tour-scroll{
-  scroll-snap-type: x mandatory;
-  scroll-snap-stop: always;
-  scroll-behavior: smooth;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  overflow-x: auto;
-  z-index: 0;
-
-
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
-  scrollbar-width: none;
-  
-
-  position: absolute;
-  top:50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-
-  width: 100%;
-  max-width: var(--max-img-width);
-}
-
-.tour-scroll::-webkit-scrollbar {
-  width: 0; /* Remove scrollbar space */
-  height: 0;
-  background: transparent; /* Optional: just make scrollbar invisible */
-  -webkit-appearance: none;
-  display: none;
-}
 
 #signin-block{
   position: fixed;
   bottom: 2rem;
   width: 100%;
   height: 2.6rem;
+  z-index: 100;
   /* border: 1px solid black; */
 }
 
@@ -420,34 +384,47 @@ body{
   right: 0;
 } 
 
-#slide-dots{
+#tour-wrapper{
   position: absolute;
-  /* display: inline-block; */
-  top: 0;
+  top:50%;
   left: 50%;
-  transform: translate(-50%,calc(-100% - 2rem));
-  width: 4rem;
-  /* border: 1px solid black; */
+  transform: translate(-50%,-50%);
+
+  width: min(500px, 100vw, (90vh - 2rem) * 0.864);
+}
+
+.swiper {
+  width: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
   align-items: center;
-  /* gap: 1rem; */
-  transition: transform 1s ease;
 }
 
-@media (max-height:600px) {
-  #slide-dots{
-    /* background-color: red; */
-    transform: translate(-50%,3rem);
-  }
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-bottom: 2rem;
 }
 
-#slide-dots > div{
-  height: 0.5rem;
-  width: 0.5rem;
-  border-radius: 0.25rem;
-  box-sizing: content-box;
-}
 
 /* ------------------------------------------------- */
 
