@@ -433,3 +433,10 @@ body{
   width: 1.5rem;
   margin: 1rem 1rem;
 }
+
+#google-login{
+  position: fixed;
+  bottom: 10%;
+  left: 50%;;
+  transform: translate(-50%,0);
+}

@@ -9,6 +9,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper";
 
+import firebase from "firebase/compat/app";
+import * as firebaseui from "firebaseui";
+import "firebaseui/dist/firebaseui.css";
+
+var username = 'Chinmay';
+
 const logos = {
   home: require("./images/home.png"),
   homeSelect: require("./images/home-select.png"),
@@ -42,7 +48,7 @@ function HomeComponent() {
   return (
     <div id="home" className="container">
       <div className="title-row">
-        <span>Hi Chinmay</span>
+        <span>Hi {username}</span>
         <img src={require("./images/bell.png")} alt="bell" />
         <img src={require("./images/qr.png")} alt="qr" />
       </div>
@@ -75,7 +81,7 @@ function MyCard() {
   return (
     <div className="container">
       <div className="title-row">
-        <span>Chinmay's Card</span>
+        <span>{username}'s Card</span>
       </div>
       <div style={{ marginTop: ".7rem", marginBottom: "1.7em" }}>
         Show this card each time you shop and get instant cash saving
@@ -129,7 +135,7 @@ function Profile(props) {
         className=" mask-container"
         onClick={(e) => openMask(e)}
       >
-        <div>Chinmay</div>
+        <div>{username}</div>
         <div className="mask"></div>
         <div>View and edit profile</div>
       </div>
@@ -373,7 +379,49 @@ function TourSpace(props) {
   );
 }
 
+const firebaseConfig = {
+  apiKey: "AIzaSyBGh-dRWFP0zvy23S2B0xUYi6yePunXons",
+  authDomain: "auth-5acae.firebaseapp.com",
+  projectId: "auth-5acae",
+  storageBucket: "auth-5acae.appspot.com",
+  messagingSenderId: "734665972003",
+  appId: "1:734665972003:web:08084f0bafd90b8abad496",
+  measurementId: "G-DP5NP4RN0B",
+};
+firebase.initializeApp(firebaseConfig);
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
 function LoginSpace(props) {
+  useEffect((_) => {
+    
+    // FirebaseUI config.
+
+    var uiConfig = {
+      signInOptions: [
+        // Leave the lines as is for the providers you want to offer your users.
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      ],
+      signInFlow: 'popup',
+    
+      // tosUrl and privacyPolicyUrl accept either url string or a callback
+      // function.
+      // Terms of service url/callback.
+      callbacks: {
+        signInSuccessWithAuthResult: function (authResult, redirectUrl) {
+          username=authResult.user.displayName.split(' ')[0];
+          username = username.charAt(0).toUpperCase() + username.slice(1);
+          props.setSpace('user')
+          return false;
+        },
+      },
+    };
+    
+    
+    // Initialize the FirebaseUI Widget using Firebase.
+    
+    // The start method will wait until the DOM is loaded.
+    ui.start("#google-login", uiConfig);
+  }, []);
   return (
     <div className="main">
       <img
@@ -383,6 +431,7 @@ function LoginSpace(props) {
           props.setSpace("tour");
         }}
       />
+      <div id="google-login"></div>
     </div>
   );
 }
