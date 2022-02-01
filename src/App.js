@@ -392,7 +392,7 @@ firebase.initializeApp(firebaseConfig);
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 function LoginSpace(props) {
-  useEffect((_) => {
+  useEffect(() => {
     
     // FirebaseUI config.
 
